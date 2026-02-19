@@ -1,0 +1,255 @@
+/*
+ * components/contact.css
+ * Contact section — QR code, social links, hire me CTA.
+ * Sits between the story feed and the conclusion.
+ * Dark background to contrast with the lime conclusion section.
+ */
+
+/* ── Section ─────────────────────────────────────────────────── */
+#contact {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 120px 0;
+}
+
+/* ── Two-column layout ───────────────────────────────────────── */
+/*
+ * Left: Headline + social links
+ * Right: QR code card
+ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── Left Column ─────────────────────────────────────────────── */
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 100px);
+  line-height: 0.9;
+  margin-bottom: 24px;
+}
+
+.contact-title span {
+  color: var(--lime);
+}
+
+.contact-sub {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* ── Social Link Buttons ─────────────────────────────────────── */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 28px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--surface);
+  transition:
+    border-color var(--transition-fast),
+    background   var(--transition-fast),
+    transform    var(--transition-fast);
+  text-decoration: none;
+  color: var(--text);
+  max-width: 420px;
+}
+
+.contact-link:hover {
+  border-color: var(--lime);
+  background: rgba(200, 255, 0, 0.03);
+  transform: translateX(6px);
+}
+
+/* Icon wrapper — holds the SVG icon */
+.contact-link-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-link-icon svg {
+  width: 20px;
+  height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* LinkedIn brand color */
+.contact-link--linkedin .contact-link-icon {
+  background: rgba(0, 119, 181, 0.15);
+  border: 1px solid rgba(0, 119, 181, 0.2);
+}
+
+.contact-link--linkedin .contact-link-icon svg {
+  fill: #0077b5;
+}
+
+/* Gmail brand color */
+.contact-link--gmail .contact-link-icon {
+  background: rgba(234, 67, 53, 0.12);
+  border: 1px solid rgba(234, 67, 53, 0.2);
+}
+
+.contact-link--gmail .contact-link-icon svg {
+  fill: #ea4335;
+}
+
+/* GitHub — near-white on dark surface */
+.contact-link--github .contact-link-icon {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-link--github .contact-link-icon svg {
+  fill: #e8e3d8;
+}
+
+/* Outlook brand color */
+.contact-link--outlook .contact-link-icon {
+  background: rgba(0, 120, 212, 0.12);
+  border: 1px solid rgba(0, 120, 212, 0.2);
+}
+
+.contact-link--outlook .contact-link-icon svg {
+  fill: #0078d4;
+}
+
+.contact-link-body {
+  flex: 1;
+}
+
+.contact-link-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.contact-link-value {
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--text);
+}
+
+.contact-link-arrow {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--muted);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.contact-link:hover .contact-link-arrow {
+  color: var(--lime);
+  transform: translateX(4px);
+}
+
+/* ── Right Column: QR Code Card ──────────────────────────────── */
+.contact-qr-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+
+/* Lime top accent bar — matches phase cards pattern */
+.contact-qr-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--lime);
+  border-radius: 2px 2px 0 0;
+}
+
+.contact-qr-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── QR code image wrapper ───────────────────────────────────── */
+/*
+ * White padding behind the QR code is required for scanners —
+ * QR codes need high contrast against a white background.
+ * Never put a QR directly on a dark background.
+ */
+.contact-qr-frame {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-qr-frame img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  image-rendering: pixelated; /* Keep QR crisp at any size */
+}
+
+.contact-qr-url {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.contact-qr-url span {
+  display: block;
+  color: var(--lime);
+  margin-top: 4px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .contact-qr-card {
+    max-width: 360px; /* Don't stretch the QR card full-width on mobile */
+  }
+
+  .contact-link {
+    max-width: 100%;
+  }
+}
