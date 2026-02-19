@@ -1,0 +1,67 @@
+/*
+ * components/charts.css
+ * Chart wrapper containers and section layout for the data section.
+ * Chart.js canvases are sized and rendered by the library itself —
+ * these styles control the surrounding UI chrome only.
+ */
+
+/* ── Section ─────────────────────────────────────────────────── */
+#data {
+  background: var(--bg);
+}
+
+/* ── Chart Card ──────────────────────────────────────────────── */
+.chart-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 40px;
+  margin-bottom: 24px;
+}
+
+/* ── Chart Title / Label Row ─────────────────────────────────── */
+/*
+ * The ::after pseudo-element creates a horizontal rule that extends
+ * from the label text to the right edge of the container — a clean
+ * editorial device to separate the label from the chart below.
+ */
+.chart-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chart-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Two-Column Chart Row ────────────────────────────────────── */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+canvas {
+  max-width: 100%;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-container {
+    padding: 24px;
+  }
+}

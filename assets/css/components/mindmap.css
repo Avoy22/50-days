@@ -1,0 +1,100 @@
+/*
+ * components/mindmap.css
+ * 50-cell mental state heatmap grid.
+ * Each cell is one day. Color is driven by mental state via JS.
+ */
+
+/* ── Section ─────────────────────────────────────────────────── */
+#mindmap {
+  background: var(--surface);
+}
+
+/* ── Grid ────────────────────────────────────────────────────── */
+/*
+ * 10 columns × 5 rows = 50 cells exactly.
+ * aspect-ratio: 1 keeps cells perfectly square regardless of width.
+ */
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  margin-top: 48px;
+}
+
+/* ── Individual Cell ─────────────────────────────────────────── */
+.state-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.state-cell:hover {
+  transform: scale(1.15);
+  z-index: 2;
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────── */
+/*
+ * CSS-only tooltip using ::after + data-label attribute.
+ * Appears above the cell on hover. No JS needed.
+ */
+.state-cell::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+.state-cell:hover::after {
+  opacity: 1;
+}
+
+/* ── Legend ──────────────────────────────────────────────────── */
+.state-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .state-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+  }
+}

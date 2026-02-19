@@ -1,0 +1,134 @@
+/*
+ * components/story.css
+ * Timeline-style story feed for key journal entries.
+ * Uses a left vertical rule + pseudo-element dots as a timeline spine.
+ */
+
+/* ── Section ─────────────────────────────────────────────────── */
+#story {
+  background: var(--surface);
+}
+
+/* ── Feed Container ──────────────────────────────────────────── */
+/*
+ * The ::before creates a continuous vertical line along the left edge.
+ * Individual entry dots (::before on .story-entry) pierce this line.
+ */
+.story-feed {
+  margin-top: 60px;
+  position: relative;
+}
+
+.story-feed::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+/* ── Story Entry ─────────────────────────────────────────────── */
+.story-entry {
+  padding: 40px 0 40px 48px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 40px;
+  position: relative;
+  /* Initial hidden state for scroll reveal */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.story-entry.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Timeline Dot ────────────────────────────────────────────── */
+/* Default dot — muted border color */
+.story-entry::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 44px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 2px solid var(--bg);
+}
+
+/* Highlighted dots for important entries */
+.story-entry.milestone::before { background: var(--lime); }
+.story-entry.low::before       { background: var(--collapse); }
+
+/* ── Left Column: Date + Phase Tag ───────────────────────────── */
+.entry-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding-top: 4px;
+}
+
+.entry-phase-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-top: 6px;
+  /* Background and color set inline by JS using phase color map */
+}
+
+/* ── Right Column: Content ───────────────────────────────────── */
+.entry-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.entry-text {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+  font-style: italic;
+  max-width: 600px;
+}
+
+/* ── Entry Stats Row ─────────────────────────────────────────── */
+.entry-stats {
+  margin-top: 16px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.entry-stat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.entry-stat strong {
+  color: var(--text);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .story-entry {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 32px;
+  }
+}

@@ -1,0 +1,104 @@
+/*
+ * base.css
+ * CSS Reset, body defaults, global utility classes, and layout helpers.
+ * These styles apply universally — no component-specific rules here.
+ */
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Body ────────────────────────────────────────────────────── */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none; /* Replaced by custom cursor via JS */
+}
+
+/* ── Selection ───────────────────────────────────────────────── */
+::selection {
+  background: var(--lime);
+  color: #000;
+}
+
+/* ── Links ───────────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Noise Texture Overlay ───────────────────────────────────── */
+/*
+ * Creates a subtle film-grain effect across the entire page.
+ * The SVG turbulence filter is inlined as a data URI to avoid
+ * an external HTTP request. position: fixed so it covers the
+ * viewport regardless of scroll position.
+ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.4;
+}
+
+/* ── Layout Utilities ────────────────────────────────────────── */
+section {
+  position: relative;
+  z-index: 1; /* Sits above the fixed noise overlay */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-pad {
+  padding: 120px 0;
+}
+
+/* ── Typographic Utilities ───────────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 100px);
+  line-height: 0.9;
+}
+
+/* ── Responsive Breakpoints ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+}

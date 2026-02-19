@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── SEO & Social ──────────────────────────────────────────── -->
+  <title>50 Days — A System Rebuilt from Collapse</title>
+  <meta name="description" content="50 days of behavioral tracking, mental state data, and one turning point that rebuilt everything. A data storytelling project by Avoy." />
+  <meta name="author" content="Avoy" />
+
+  <!-- Open Graph (for LinkedIn, Twitter previews) -->
+  <meta property="og:title"       content="50 Days — A System Rebuilt from Collapse" />
+  <meta property="og:description" content="50 days of raw data, real decisions, and one turning point that changed everything." />
+  <meta property="og:type"        content="website" />
+
+  <!-- ── Fonts ─────────────────────────────────────────────────── -->
+  <!--
+    Three purposeful font choices:
+      Bebas Neue       — Display / Headlines (condensed, bold, editorial)
+      Cormorant Garamond — Body / Narrative (refined, serif, literary)
+      JetBrains Mono   — Data / Labels (monospace, technical, precise)
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- ── Stylesheets ───────────────────────────────────────────── -->
+  <!-- Load order matters: tokens first, then base, then animations, then components -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/components/nav.css" />
+  <link rel="stylesheet" href="assets/css/components/hero.css" />
+  <link rel="stylesheet" href="assets/css/components/phases.css" />
+  <link rel="stylesheet" href="assets/css/components/charts.css" />
+  <link rel="stylesheet" href="assets/css/components/metrics.css" />
+  <link rel="stylesheet" href="assets/css/components/mindmap.css" />
+  <link rel="stylesheet" href="assets/css/components/execution.css" />
+  <link rel="stylesheet" href="assets/css/components/story.css" />
+  <link rel="stylesheet" href="assets/css/components/footer.css" />
+
+</head>
+<body>
+
+  <!-- ── Custom Cursor ─────────────────────────────────────────── -->
+  <!-- Position and size controlled by animations.js -->
+  <div id="cursor" aria-hidden="true"></div>
+
+  <!-- ── Reading Progress Bar ──────────────────────────────────── -->
+  <!-- Width driven by scroll position via animations.js -->
+  <div id="progress-bar" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  NAVIGATION                                                  -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-brand">50 Days / Avoy</div>
+    <div class="nav-links">
+      <a href="#phases">Phases</a>
+      <a href="#data">Data</a>
+      <a href="#mindmap">Mind</a>
+      <a href="#story">Story</a>
+      <a href="#conclusion">Rebuild</a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  SECTION 0 — HERO                                            -->
+  <!--  Full-viewport opening with animated counters               -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="hero" aria-label="Introduction">
+
+    <!-- Ghost "50" background number — decorative -->
+    <div class="hero-bg-number" aria-hidden="true">50</div>
+
+    <!-- Eyebrow line -->
+    <p class="hero-tag">Jan 1 – Feb 19, 2026 &nbsp;·&nbsp; Dhaka, Bangladesh &nbsp;·&nbsp; AvoyOS</p>
+
+    <!-- Main headline -->
+    <h1 class="hero-title">
+      A System<br />
+      <span>Rebuilt</span><br />
+      from Zero
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="hero-sub">
+      50 days of raw data, real decisions, and one turning point that changed everything.
+    </p>
+
+    <!-- Animated stat counters (values set by animations.js) -->
+    <div class="hero-meta" role="list" aria-label="Key statistics">
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-value" id="counter-days" aria-label="50 total days">0</div>
+        <div class="hero-stat-label">Total Days</div>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-value" id="counter-work" aria-label="40 deep work hours">0</div>
+        <div class="hero-stat-label">Deep Work Hours</div>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-value" id="counter-zero" aria-label="5 sleepless nights">0</div>
+        <div class="hero-stat-label">Sleepless Nights</div>
+      </div>
+      <div class="hero-stat" role="listitem">
+        <div class="hero-stat-value" id="counter-peak" aria-label="8 hours peak output">0</div>
+        <div class="hero-stat-label">Peak Output (hrs)</div>
+      </div>
+    </div>
+
+    <p class="scroll-hint" aria-hidden="true">Scroll to explore</p>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  SECTION 1 — PHASES                                          -->
+  <!--  Four-phase breakdown cards                                  -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="phases" aria-label="System phases">
+    <div class="container">
+      <header class="phases-header reveal">
+        <p class="section-label">01 — System Phases</p>
+        <h2 class="section-title">Four Acts.<br />One Story.</h2>
+      </header>
+    </div>
+
+    <div class="phases-grid" role="list">
+
+      <article class="phase-card reveal reveal-delay-1" data-phase="collapse" role="listitem">
+        <div class="phase-number" aria-hidden="true">I</div>
+        <h3 class="phase-name">Collapse</h3>
+        <p class="phase-dates">Jan 01 – Jan 26</p>
+        <div class="phase-days">26</div>
+        <p class="phase-days-label">Days</p>
+        <p class="phase-desc">Complete system failure. Sleepless nights, bad influence, zero execution. Living without direction.</p>
+        <p class="phase-deep-work">Deep Work: <strong>0 hrs</strong> &nbsp;·&nbsp; Avg Waste: <strong>9.5 hrs/day</strong></p>
+      </article>
+
+      <article class="phase-card reveal reveal-delay-2" data-phase="reset" role="listitem">
+        <div class="phase-number" aria-hidden="true">II</div>
+        <h3 class="phase-name">Reset</h3>
+        <p class="phase-dates">Jan 27 – Jan 30</p>
+        <div class="phase-days">4</div>
+        <p class="phase-days-label">Days</p>
+        <p class="phase-desc">Escaped to Cox's Bazar. Zero bad influence. Sea walks, journaling, first real sleep in weeks.</p>
+        <p class="phase-deep-work">Deep Work: <strong>0 hrs</strong> &nbsp;·&nbsp; Bad Influence: <strong>0 hrs</strong></p>
+      </article>
+
+      <article class="phase-card reveal reveal-delay-3" data-phase="relapse" role="listitem">
+        <div class="phase-number" aria-hidden="true">III</div>
+        <h3 class="phase-name">Relapse</h3>
+        <p class="phase-dates">Jan 31 – Feb 11</p>
+        <div class="phase-days">12</div>
+        <p class="phase-days-label">Days</p>
+        <p class="phase-desc">Back in the city. Reopened social media. Slipped back. But something was growing underneath.</p>
+        <p class="phase-deep-work">Deep Work: <strong>0 hrs</strong> &nbsp;·&nbsp; Avg Waste: <strong>7.8 hrs/day</strong></p>
+      </article>
+
+      <article class="phase-card reveal reveal-delay-4" data-phase="execution" role="listitem">
+        <div class="phase-number" aria-hidden="true">IV</div>
+        <h3 class="phase-name">Execution</h3>
+        <p class="phase-dates">Feb 12 – Feb 19</p>
+        <div class="phase-days">8</div>
+        <p class="phase-days-label">Days</p>
+        <p class="phase-desc">Firm decision. Bad influences cut. Sleep optimized. AvoyOS built. 40 hours of deep work in 8 days.</p>
+        <p class="phase-deep-work">Deep Work: <strong>40 hrs</strong> &nbsp;·&nbsp; Bad Influence: <strong>0 hrs</strong></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  SECTION 2 — DATA CHARTS                                     -->
+  <!--  Three Chart.js visualizations                               -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="data" class="section-pad" aria-label="Data visualizations">
+    <div class="container">
+
+      <header class="reveal">
+        <p class="section-label">02 — Raw Data</p>
+        <h2 class="section-title" style="margin-bottom:60px;">The Numbers<br />Don't Lie</h2>
+      </header>
+
+      <!-- Main chart: Deep Work vs Waste -->
+      <div class="chart-container reveal" role="img" aria-label="Line chart: Deep work hours vs waste hours over 50 days">
+        <p class="chart-title">Deep Work vs. Waste Hours — 50 Day Timeline</p>
+        <canvas id="mainChart" height="80"></canvas>
+      </div>
+
+      <!-- Two-column secondary charts -->
+      <div class="charts-row">
+        <div class="chart-container reveal reveal-delay-1" role="img" aria-label="Bar chart: Sleep hours per day">
+          <p class="chart-title">Sleep Hours per Day</p>
+          <canvas id="sleepChart" height="180"></canvas>
+        </div>
+        <div class="chart-container reveal reveal-delay-2" role="img" aria-label="Line chart: Bad influence hours per day">
+          <p class="chart-title">Bad Influence Hours</p>
+          <canvas id="influenceChart" height="180"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  METRICS STRIP                                               -->
+  <!--  High-contrast black-on-lime highlight band                  -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="metrics" aria-label="Key metrics">
+    <div class="container">
+      <div class="metrics-grid" role="list">
+
+        <div class="metric-item reveal reveal-delay-1" role="listitem">
+          <!-- data-target read by animations.js for counter animation -->
+          <div class="metric-value" data-target="5">0</div>
+          <p class="metric-label">Sleepless Nights</p>
+          <p class="metric-delta">All in Collapse &amp; Relapse phases</p>
+        </div>
+
+        <div class="metric-item reveal reveal-delay-2" role="listitem">
+          <div class="metric-value" data-target="40">0</div>
+          <p class="metric-label">Deep Work Hours</p>
+          <p class="metric-delta">All generated in 8 days</p>
+        </div>
+
+        <div class="metric-item reveal reveal-delay-3" role="listitem">
+          <div class="metric-value" data-target="247">0</div>
+          <p class="metric-label">Waste Hours Lost</p>
+          <p class="metric-delta">Across 42 non-execution days</p>
+        </div>
+
+        <div class="metric-item reveal reveal-delay-4" role="listitem">
+          <div class="metric-value" data-target="8">0</div>
+          <p class="metric-label">Peak Output (hrs)</p>
+          <p class="metric-delta">Feb 19 — Project shipped</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  SECTION 3 — MENTAL STATE MAP                                -->
+  <!--  50-cell heatmap, one cell per day                           -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="mindmap" class="section-pad" aria-label="Mental state heatmap">
+    <div class="container">
+
+      <header class="reveal">
+        <p class="section-label">03 — Mental Terrain</p>
+        <h2 class="section-title" style="margin-bottom:20px;">50 Days of<br />Mental States</h2>
+        <p style="font-style:italic; color:var(--muted); max-width:500px; margin-bottom:40px;">
+          Every cell is a day. Hover to see what state the mind was in.
+          Watch the color shift as the system rebuilds.
+        </p>
+      </header>
+
+      <!-- Grid is built dynamically by mindmap.js -->
+      <div class="state-grid" id="stateGrid" role="grid" aria-label="50-day mental state grid"></div>
+
+      <!-- Legend built dynamically by mindmap.js -->
+      <div class="state-legend reveal" id="stateLegend" aria-label="Mental state legend"></div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  TURNING POINT BREAK                                         -->
+  <!--  February 12, 2026 — the pivot moment                        -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="turning" aria-label="The turning point">
+    <div class="turning-bg" aria-hidden="true"></div>
+    <div class="container">
+      <p class="turning-date reveal">February 12, 2026 — Day 43 of 50</p>
+      <h2 class="turning-text reveal">
+        THE DAY<br />EVERYTHING<br />CHANGED
+        <em>4 hours sleep. 2 hours bad influence. 1 hour deep work.<br />And a decision that would define the next 8 days.</em>
+      </h2>
+      <blockquote class="turning-quote reveal">
+        TURNING POINT: Made the firm decision to detach from bad influence.
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  SECTION 4 — EXECUTION SPRINT                                -->
+  <!--  Animated progress bars for each execution day               -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="execution-section" class="section-pad" aria-label="Execution sprint">
+    <div class="container">
+
+      <header class="reveal">
+        <p class="section-label">04 — The Execution Sprint</p>
+        <h2 class="section-title" style="margin-bottom:60px;">8 Days.<br />40 Hours.</h2>
+      </header>
+
+      <!-- Rows are built dynamically by execution.js -->
+      <div id="execBars" role="list" aria-label="Deep work hours per execution day"></div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  SECTION 5 — STORY FEED                                      -->
+  <!--  9 key journal entries with timeline treatment               -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="story" class="section-pad" aria-label="Key story moments">
+    <div class="container">
+
+      <header class="reveal">
+        <p class="section-label">05 — Key Moments</p>
+        <h2 class="section-title" style="margin-bottom:8px;">The Entries<br />That Mattered</h2>
+        <p style="font-style:italic; color:var(--muted); margin-bottom:60px; max-width:480px;">
+          Hand-picked moments from the log. The lows that defined the problem.
+          The highs that built the system.
+        </p>
+      </header>
+
+      <!-- Entries are built dynamically by story.js -->
+      <div class="story-feed" id="storyFeed" role="feed" aria-label="Journal entries"></div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  CONCLUSION                                                   -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="conclusion" aria-label="Conclusion">
+    <div class="conclusion-bg" aria-hidden="true"></div>
+    <div class="container">
+      <p class="conclusion-label reveal">50 Days Complete</p>
+      <h2 class="conclusion-title reveal">The System<br />Is Alive.</h2>
+      <p class="conclusion-body reveal">
+        Collapse was not failure. It was data. Reset was not escape. It was clarity.
+        Relapse was not weakness. It was proof that the environment needed to change.
+        Execution was not luck. It was the compounded result of every hard day before it.
+      </p>
+      <!-- Update href with your actual GitHub URL before publishing -->
+      <a href="https://github.com/Avoy22/50-days.git" class="conclusion-cta reveal" target="_blank" rel="noopener noreferrer">
+        View on GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  FOOTER                                                       -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-brand">AVOY</div>
+    <div class="footer-info">
+      50 Days Data Story &nbsp;·&nbsp; Dhaka, Bangladesh<br />
+      Built with HTML / CSS / JavaScript &nbsp;·&nbsp; 2026<br />
+      <span class="highlight">AvoyOS — System Rebuilt</span>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!--  SCRIPTS                                                      -->
+  <!--  Load order is critical — each file depends on the previous  -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+
+  <!-- External dependency: Chart.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <!-- Data first — all modules read from DAYS -->
+  <script src="assets/js/data.js"></script>
+
+  <!-- Feature modules — order between these doesn't matter -->
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/mindmap.js"></script>
+  <script src="assets/js/story.js"></script>
+  <script src="assets/js/execution.js"></script>
+  <script src="assets/js/animations.js"></script>
+
+  <!-- Entry point last — calls all init functions -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

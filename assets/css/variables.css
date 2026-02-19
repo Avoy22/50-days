@@ -1,0 +1,39 @@
+/*
+ * variables.css
+ * Design tokens — the single source of truth for the entire design system.
+ * All colors, fonts, and spacing values reference these custom properties.
+ *
+ * To retheme the project, edit values here only.
+ */
+
+:root {
+
+  /* ── Backgrounds ────────────────────────────────────────────── */
+  --bg:       #080808;   /* Page background — near-black       */
+  --surface:  #111111;   /* Cards, sections — slightly lifted  */
+  --border:   #1e1e1e;   /* Dividers, outlines                 */
+
+  /* ── Text ───────────────────────────────────────────────────── */
+  --text:     #e8e3d8;   /* Primary body text — warm white     */
+  --muted:    #555555;   /* Labels, secondary copy             */
+
+  /* ── Brand Accent ───────────────────────────────────────────── */
+  --lime:     #c8ff00;   /* Primary accent — electric lime     */
+
+  /* ── Phase Colors ───────────────────────────────────────────── */
+  --collapse: #ff3b3b;   /* Phase I  — Collapse  (red)         */
+  --reset:    #00d4b1;   /* Phase II — Reset     (teal)        */
+  --relapse:  #ff8c00;   /* Phase III— Relapse   (orange)      */
+  --execution:#c8ff00;   /* Phase IV — Execution (lime)        */
+
+  /* ── Typography ─────────────────────────────────────────────── */
+  --font-display: 'Bebas Neue', sans-serif;           /* Headlines  */
+  --font-body:    'Cormorant Garamond', Georgia, serif;/* Narrative  */
+  --font-mono:    'JetBrains Mono', monospace;         /* Data/Labels*/
+
+  /* ── Transitions ─────────────────────────────────────────────── */
+  --ease-out-quart: cubic-bezier(.16, 1, .3, 1);
+  --transition-fast:  0.2s ease;
+  --transition-base:  0.3s ease;
+  --transition-slow:  0.7s ease;
+}

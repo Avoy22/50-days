@@ -1,0 +1,82 @@
+/*
+ * animations.css
+ * All @keyframes definitions and scroll-reveal utility classes.
+ *
+ * Pattern: Elements start with class .reveal (hidden, translated down).
+ * JavaScript adds .visible via IntersectionObserver when they enter viewport.
+ * Delay variants (.reveal-delay-1 through -4) create staggered group reveals.
+ */
+
+/* ── Keyframes ───────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  50%       { transform: translate(-50%, -50%) translateY(-20px); }
+}
+
+/* ── Scroll Reveal Classes ───────────────────────────────────── */
+/*
+ * Applied in HTML. JS removes hidden state by adding .visible.
+ * transition-delay variants allow staggered sibling reveals.
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity  var(--transition-slow),
+    transform var(--transition-slow);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Hero Auto-animations ────────────────────────────────────── */
+/*
+ * Hero elements animate on page load (no scroll trigger needed).
+ * Each element has a slightly later animation-delay for a cascade effect.
+ */
+.hero-tag {
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-title {
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s forwards;
+}
+
+.hero-sub {
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+}
+
+.hero-meta {
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.scroll-hint {
+  animation: fadeIn 1s 1.5s both;
+}

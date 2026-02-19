@@ -1,0 +1,142 @@
+/*
+ * components/execution.css
+ * Animated progress bars for the 8-day execution sprint.
+ * Each row represents one day, with a bar that fills to
+ * represent deep work hours (max 8h = 100%).
+ */
+
+/* ── Section ─────────────────────────────────────────────────── */
+#execution-section {
+  background: var(--bg);
+}
+
+/* ── Turning Point Break ─────────────────────────────────────── */
+#turning {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial glow emanating from the bottom — atmosphere */
+.turning-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(200, 255, 0, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.turning-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 24px;
+}
+
+.turning-text {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 90px);
+  line-height: 0.95;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.turning-text em {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.65em;
+  color: var(--muted);
+  display: block;
+  margin-top: 12px;
+}
+
+.turning-quote {
+  margin: 48px auto 0;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.turning-quote::before { content: '"'; }
+.turning-quote::after  { content: '"'; }
+
+/* ── Execution Bar Row ───────────────────────────────────────── */
+.exec-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Date label */
+.exec-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  width: 100px;
+  flex-shrink: 0;
+}
+
+/* Mental state label */
+.exec-state {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--lime);
+  width: 110px;
+  flex-shrink: 0;
+}
+
+/* ── Progress Bar Track ──────────────────────────────────────── */
+.exec-bar-wrap {
+  flex: 1;
+  height: 24px;
+  background: var(--surface);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* ── Progress Bar Fill ───────────────────────────────────────── */
+/*
+ * Starts at width: 0 in CSS.
+ * JS sets width to the target percentage after IntersectionObserver
+ * fires, triggering this transition for a smooth fill animation.
+ */
+.exec-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #6fff00, #c8ff00);
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.2s var(--ease-out-quart);
+}
+
+/* Hour count label */
+.exec-hours {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--lime);
+  width: 60px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .exec-state {
+    display: none; /* Remove mental state label on small screens */
+  }
+
+  .exec-date {
+    width: 70px;
+    font-size: 10px;
+  }
+}

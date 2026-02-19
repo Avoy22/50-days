@@ -1,0 +1,145 @@
+/*
+ * components/phases.css
+ * Four-phase card grid — Collapse, Reset, Relapse, Execution.
+ */
+
+/* ── Section Container ───────────────────────────────────────── */
+#phases {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.phases-header {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Grid Layout ─────────────────────────────────────────────── */
+/*
+ * Full-bleed grid (no container wrapper) so borders align flush
+ * with the section edges. border-left on grid + border-right on
+ * each card creates a seamless grid line effect.
+ */
+.phases-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-left: 1px solid var(--border);
+}
+
+/* ── Phase Card ──────────────────────────────────────────────── */
+.phase-card {
+  padding: 48px 40px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: background var(--transition-base);
+}
+
+.phase-card:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Top Accent Bar ──────────────────────────────────────────── */
+/*
+ * 3px colored bar at the top of each card — color matches the phase.
+ * Uses data-phase attribute for selector specificity without extra classes.
+ */
+.phase-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.phase-card[data-phase="collapse"]::before  { background: var(--collapse); }
+.phase-card[data-phase="reset"]::before     { background: var(--reset); }
+.phase-card[data-phase="relapse"]::before   { background: var(--relapse); }
+.phase-card[data-phase="execution"]::before { background: var(--execution); }
+
+/* ── Background Number ───────────────────────────────────────── */
+/* Ghost Roman numeral in the corner — decorative only */
+.phase-number {
+  font-family: var(--font-display);
+  font-size: 80px;
+  line-height: 1;
+  opacity: 0.08;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  user-select: none;
+}
+
+/* ── Phase Name ──────────────────────────────────────────────── */
+.phase-name {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.phase-card[data-phase="collapse"]  .phase-name { color: var(--collapse); }
+.phase-card[data-phase="reset"]     .phase-name { color: var(--reset); }
+.phase-card[data-phase="relapse"]   .phase-name { color: var(--relapse); }
+.phase-card[data-phase="execution"] .phase-name { color: var(--execution); }
+
+/* ── Phase Metadata ──────────────────────────────────────────── */
+.phase-dates {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.phase-days {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.phase-days-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.phase-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.phase-deep-work {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.phase-deep-work strong {
+  color: var(--text);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .phases-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .phases-grid {
+    grid-template-columns: 1fr;
+  }
+}

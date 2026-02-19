@@ -1,0 +1,138 @@
+/*
+ * components/hero.css
+ * Full-viewport hero section styles.
+ */
+
+/* ── Hero Section ────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Background Number ───────────────────────────────────────── */
+/*
+ * The giant "50" behind the hero text. Uses transparent fill with
+ * a very subtle stroke so it reads as a ghost — atmosphere only.
+ * Floats gently on an 8-second loop (keyframe in animations.css).
+ */
+.hero-bg-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(200px, 30vw, 500px);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(200, 255, 0, 0.04);
+  user-select: none;
+  white-space: nowrap;
+  animation: float 8s ease-in-out infinite;
+}
+
+/* ── Hero Tag (eyebrow line) ─────────────────────────────────── */
+.hero-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 24px;
+  /* Animation class applied via animations.css */
+}
+
+/* ── Hero Title ──────────────────────────────────────────────── */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 12vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  max-width: 1000px;
+}
+
+.hero-title span {
+  color: var(--lime);
+}
+
+/* ── Hero Subtitle ───────────────────────────────────────────── */
+.hero-sub {
+  margin-top: 40px;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-style: italic;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+/* ── Hero Stat Counters ──────────────────────────────────────── */
+.hero-meta {
+  margin-top: 60px;
+  display: flex;
+  gap: 60px;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-size: 52px;
+  line-height: 1;
+  color: var(--lime);
+}
+
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Scroll Hint ─────────────────────────────────────────────── */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scroll-hint::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--muted);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #hero {
+    padding: 0 24px 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-meta {
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat-value {
+    font-size: 40px;
+  }
+}

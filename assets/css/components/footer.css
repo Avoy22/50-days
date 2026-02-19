@@ -1,0 +1,123 @@
+/*
+ * components/footer.css
+ * Conclusion section (large closing statement) and page footer.
+ */
+
+/* ── Conclusion Section ──────────────────────────────────────── */
+#conclusion {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--surface);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow from the left — mirrors the hero's ghost lighting */
+.conclusion-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 0% 50%, rgba(200, 255, 0, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.conclusion-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 32px;
+}
+
+.conclusion-title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 140px);
+  line-height: 0.85;
+  margin-bottom: 48px;
+}
+
+.conclusion-body {
+  max-width: 600px;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 60px;
+}
+
+/* ── CTA Button ──────────────────────────────────────────────── */
+.conclusion-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #000;
+  background: var(--lime);
+  padding: 16px 32px;
+  border-radius: 2px;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.conclusion-cta:hover {
+  background: #d4ff1a;
+  transform: translateX(4px);
+}
+
+.conclusion-cta::after {
+  content: '→';
+  font-size: 16px;
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--lime);
+}
+
+.footer-info {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.8;
+}
+
+.footer-info .highlight {
+  color: var(--lime);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-info {
+    text-align: center;
+  }
+
+  .conclusion-body {
+    font-size: 17px;
+  }
+}
