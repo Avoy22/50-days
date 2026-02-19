@@ -48,48 +48,116 @@
   margin-bottom: 60px;
 }
 
-/* ── CTA Button ──────────────────────────────────────────────── */
+/* ── CTA Buttons (Dual Layout) ─────────────────────────────── */
+.conclusion-ctas {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .conclusion-cta {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #000;
-  background: var(--lime);
   padding: 16px 32px;
   border-radius: 2px;
   transition:
     background var(--transition-fast),
-    transform var(--transition-fast);
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    border var(--transition-fast);
+  text-decoration: none;
 }
 
-.conclusion-cta:hover {
+/* Primary CTA — GitHub (Lime background) */
+.conclusion-cta--primary {
+  color: #000;
+  background: var(--lime);
+  border: 2px solid var(--lime);
+}
+
+.conclusion-cta--primary:hover {
   background: #d4ff1a;
+  border-color: #d4ff1a;
+  transform: translateX(4px);
+}
+
+/* Secondary CTA — Contact (Outlined) */
+.conclusion-cta--secondary {
+  color: var(--lime);
+  background: transparent;
+  border: 2px solid var(--lime);
+}
+
+.conclusion-cta--secondary:hover {
+  color: #000;
+  background: var(--lime);
+  border-color: var(--lime);
   transform: translateX(4px);
 }
 
 .conclusion-cta::after {
   content: '→';
-  font-size: 16px;
+  font-size: 14px;
 }
 
-/* ── Footer ──────────────────────────────────────────────────── */
+/* ── Footer Social Links Row ────────────────────────────────── */
+.footer-social {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.footer-social-link:hover {
+  color: var(--lime);
+  transform: translateY(-2px);
+}
+
+.footer-social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ── Footer Layout Refinement ────────────────────────────────── */
 footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
-  padding: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  justify-items: center;
 }
 
 .footer-brand {
   font-family: var(--font-display);
   font-size: 32px;
   color: var(--lime);
+  justify-self: start;
+  text-align: left;
 }
 
 .footer-info {
@@ -97,7 +165,7 @@ footer {
   font-size: 10px;
   letter-spacing: 0.15em;
   color: var(--muted);
-  text-align: right;
+  text-align: center;
   line-height: 1.8;
 }
 
@@ -105,19 +173,78 @@ footer {
   color: var(--lime);
 }
 
+/* Center alignment for social links */
+footer .footer-social {
+  justify-self: center;
+}
+
 /* ── Responsive ──────────────────────────────────────────────── */
-@media (max-width: 900px) {
+/* Tablet: 3-column to 2-column */
+@media (max-width: 1024px) {
   footer {
-    flex-direction: column;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    justify-self: center;
     text-align: center;
+  }
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+  footer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 24px;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+    text-align: center;
+    font-size: 24px;
   }
 
   .footer-info {
-    text-align: center;
+    font-size: 9px;
   }
 
+  .footer-social {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-social-link {
+    font-size: 10px;
+  }
+
+  .conclusion-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .conclusion-cta,
+  .conclusion-cta--primary,
+  .conclusion-cta--secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
   .conclusion-body {
-    font-size: 17px;
+    font-size: 16px;
+  }
+
+  footer {
+    padding: 32px 16px;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    font-size: 20px;
   }
 }
